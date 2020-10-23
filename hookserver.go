@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -66,4 +68,5 @@ func handleSubscriptionConfirmation(w http.ResponseWriter, r *http.Request) {
 
 func handleNotification(w http.ResponseWriter, r *http.Request) {
 	// do nothing, just 200, we dump the request body in main handler already
+	io.Copy(ioutil.Discard, r.Body)
 }
