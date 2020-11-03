@@ -13,7 +13,9 @@ import (
 
 func main() {
 	http.HandleFunc("/", ServeHTTP)
-	log.Fatal(http.ListenAndServe(":33345", nil))
+	listen := ":33345"
+	log.Printf("Listening on %s", listen)
+	log.Fatal(http.ListenAndServe(listen, nil))
 }
 
 // general handler for all http requests
